@@ -15,17 +15,17 @@ class User
     @jokes << joke
   end
 
-  def tell(name, joke)
-    name.jokes << joke
+  def tell(user, joke)
+    user.learn(joke)
   end
 
   def count
     count
   end
 
-  def perform_routine_for(name)
+  def perform_routine_for(user)
     self.jokes.each do |joke|
-      name.jokes << joke
+      user.learn(joke)
     end
   end
 
@@ -44,4 +44,9 @@ class User
     end
   end
 
+
 end
+
+casey = User.new("Casey")
+casey.learn_routine('./jokes.csv')
+casey.jokes.count

@@ -10,8 +10,16 @@ class Joke
   end
 
 end
-# 
+
+###### below is the class code demo
+#
 # class Joke
-#   attr_accessor :id, :questions, :answer, :joke
+#   attr_accessor :id, :questions, :answer
+#
+#   def initialize(joke)
+#     @id = joke[:id]
+#     @question = joke[:question]
+#     @answer = joke[:answer]
+#   end
 #
 # end
