@@ -10,3 +10,8 @@ class Joke
   end
 
 end
+# 
+# class Joke
+#   attr_accessor :id, :questions, :answer, :joke
+#
+# end
