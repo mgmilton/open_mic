@@ -1,10 +1,12 @@
-class Joke
-  attr_accessor :id, :question, :answer
+require './lib/user'
 
-  def initialize(name = {})
-   @id = name.fetch(:id, 1)
-   @question = name.fetch(:question, "" )
-   @answer = name.fetch(:answer, "")
+class Joke
+  attr_accessor :id, :question, :answer, :joke
+
+  def initialize(joke= {})
+   @id = joke.fetch(:id, 0)
+   @question = joke.fetch(:question, "" )
+   @answer = joke.fetch(:answer, "")
   end
 
   def id
@@ -20,9 +22,3 @@ class Joke
   end
 
 end
-
-joke = Joke.new({id: 1, question: "Why did the strawberry cross the road?", answer: "Because his mother was in a jam."})
-
-p joke.id
-p joke.question
-p joke.answer
