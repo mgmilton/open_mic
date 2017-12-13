@@ -9,16 +9,4 @@ class Joke
    @answer = joke.fetch(:answer, "")
   end
 
-  def id
-    @id
-  end
-
-  def question
-    @question
-  end
-
-  def answer
-    @answer
-  end
-
 end
