@@ -1,5 +1,7 @@
 require './lib/user'
 require './lib/joke'
+require 'csv'
+
 
 class User
   attr_reader :name, :jokes
@@ -27,15 +29,19 @@ class User
     end
   end
 
+  def learn_routine(filename)
+    data = []
+    counter = 0
+    data = CSV.read(filename, {encoding: "UTF-8",
+      headers: true,
+      header_converters: :symbol,
+      converters: :all}) do |row|
+        data << row.to_hash
+      end
+    until counter == 100
+      @jokes << Joke.new({id: data[:id][counter], question: data[:question][counter], answer: data[:answer][counter]})
+      counter+=1
+    end
+  end
+
 end
-
-joke_1 = Joke.new({id: 1, question: "Why did the strawberry cross the road?", answer: "Because his mother was in a jam."})
-
-joke_2 = Joke.new({id: 2, question: "How do you keep a lion from charging?", answer: "Take away its credit cards."})
-
-ilana = User.new("Ilana")
-josh = User.new("Josh")
-ilana.learn(joke_1)
-ilana.learn(joke_2)
-ilana.perform_routine_for(josh)
-p josh.jokes.count
